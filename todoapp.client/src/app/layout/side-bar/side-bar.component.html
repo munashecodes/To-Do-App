@@ -1,0 +1,102 @@
+<mat-nav-list>
+    <div class="logo">
+
+        <p-avatar class="avatar" image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" styleClass="mr-2" shape="circle" />
+
+        <div class="user">
+            <p>User<i class="pi pi-angle-down"></i></p>
+        </div>
+
+        <div class="sideicons">
+            <button type="button" ><i class="pi pi-bell" ></i></button>
+            <button type="button" (click)="sidebarToggler()"><i class="pi pi-bars"></i></button>
+            
+        </div>
+
+    </div>
+    
+    
+        
+    <div class="items">
+        <div class="maxitem" id="taskitem" (click)="createTask()">
+            <p mat-list-item routerLink="/" routerLinkActive="list-item-active">
+            <i class="pi pi-plus" ></i>
+            Add Task
+            </p>
+        </div> 
+        <div class="maxitem"><p mat-list-item routerLink="/inbox" routerLinkActive="list-item-active">
+            <i class="pi pi-inbox"></i>Inbox</p></div>
+        <div class="maxitem"><p mat-list-item routerLink="/today" routerLinkActive="list-item-active">
+            <i class="pi pi-calendar"></i>Today</p></div>
+        <div class="maxitem"><p mat-list-item routerLink="/upcoming" routerLinkActive="list-item-active">
+            <i class="pi pi-calendar-clock"></i>Upcoming</p></div>
+        
+    
+            
+    
+            
+
+    </div>
+        
+    
+</mat-nav-list>
+
+
+<p-dialog [(visible)]="taskmodal">
+    <ng-template pTemplate="headless">
+        <div class="flex flex-column px-8 py-5 gap-4" style="border-radius: 15px;padding: 20px;">
+            
+            <div class="inline-flex flex-column gap-2">
+                <span class="textarea" role="textbox" contenteditable></span>
+                
+            </div>
+            <div class="inline-flex flex-column gap-2">
+                
+                <span class="textarea2" role="textbox" contenteditable></span>
+            </div>
+            <div class="taskitems">
+                Date
+              <div class="taskItem">
+                
+                <p-calendar 
+                inputId="calendar-24h"
+                [showTime]="true"
+                hourFormat="24"
+                [iconDisplay]="'input'"
+                [showIcon]="true"
+                inputId="icondisplay"
+                [style]="{width: '200px', height: '40px'}"
+                />
+              </div>
+              Priority
+                <div class="taskItem">
+                    
+                    <p-dropdown 
+                        [options]="priority | keyvalue" 
+                        optionLabel="key" 
+                        [showClear]="true" 
+                        placeholder="Select Priority"
+                        [style]="{width: '200px', height: '40px'}">
+                        <ng-template let-option pTemplate="option">
+                           
+                            <p-tag [severity]="option.value" [value]="option.key"></p-tag>
+                         
+                          </ng-template>
+                    </p-dropdown>
+                    
+
+                </div>
+                
+                
+
+               
+            </div>
+            <hr>
+            <div class="flex align-items-center gap-2">
+                <p-button label="Add Task"[text]="true" styleClass="p-3 w-full border-1 border-white-alpha-30 hover:bg-white-alpha-10" class="w-full"  />
+                <p-button label="Cancel" [text]="true"  styleClass="p-3 w-full text-primary-50 border-1 border-white-alpha-30 hover:bg-white-alpha-10" class="w-full" />
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
+

@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="wrapper">
+        <div class="login-box">
+        <div class="login-header">
+            <span>Login</span>
+        </div>
+        <div class="input">
+            <input type="text" name="" placeholder="Username" id="user" class="input-field">
+            
+            <i class="pi pi-user"></i>
+        </div>
+        <div class="input">
+            <input type="password" name="" placeholder="Password" id="user" class="input-field">
+            
+            <i class="pi pi-lock"></i>
+        </div>
+        <div class="remember">
+            <div class="remember-me">
+                
+                <p-checkbox value="Remember Me" id="ny" [binary]="true" inputId="binary" />
+                <label for="ny">Remember Me</label>
+            </div>
+            <div class="forgot">
+                <a href="#">Forgot password?</a>
+            </div>
+        </div>
+        <div class="input">
+            <button pButton pRipple label="Sign In" class="input-submit"   (click)="getUser()"></button>
+    
+        </div>
+    
+        <div class="register">
+            <span>Don't have an account? <a routerLink="/auth/register">Register</a></span>
+        </div>
+    
+    </div>
+    </div>
+</div>

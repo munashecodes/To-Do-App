@@ -1,0 +1,64 @@
+@import "primeicons/primeicons.css";
+
+.container {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2.6rem 2.6rem;
+    padding-left: 30px;
+    justify-content: end;
+    align-items: center;
+}
+.button{
+    margin-right: 750px;
+}
+button{
+    border: none;
+    padding: 5px 4px 1px 0px;
+    background: transparent;
+    border-radius: 5px;
+    &:hover{
+        background-color: rgb(242, 239, 237);
+    }
+}
+
+p{
+    cursor: pointer;
+}
+
+.calender, .view{
+    height: 50px;
+    display: flex;
+    width: 200px;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+    margin-right: 10px;
+    &:hover{
+        background: rgb(255, 239, 229);
+        
+    }
+    
+}
+
+i{
+    color: #708090;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    
+}
+.wrapper{
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    padding-right: 10px;
+    
+    
+}
+
+i{
+    margin-right: 5px;
+}
+

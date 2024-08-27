@@ -1,0 +1,234 @@
+@import "primeicons/primeicons.css";
+
+mat-nav-list{
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    
+}
+
+
+
+
+.logo{
+    
+    display: flex;
+    height: 50px;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    padding: 2.6rem 1rem;
+    
+    
+}
+
+
+.logo p {
+    margin-left: -50px;
+}
+
+.logo a{
+    font-weight: 600;
+}
+
+.user .sideicons{
+    display: inline;
+}
+
+.logo i {
+    margin-left: 5px;
+    margin-right: 7px;
+}
+.avatar{
+    padding-right: 10px;
+}
+
+.logo .avatar i {
+    
+    padding-top: 20px;
+    
+    
+}
+
+
+i{
+    color: #708090;
+    
+}
+
+.items i {
+    margin-right: 10px;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+    
+    
+    
+}
+
+#task{
+    font-size: 20px;
+}
+
+#taskitem {
+    
+    color: rgb(220, 76, 62);
+    
+    margin-bottom: 5px;
+    padding-left: 0px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#taskitem i{
+    margin-right: 5px;
+    margin: 5px;
+    background-color: rgb(220, 76, 62); 
+    color: white; 
+    padding: 7px; 
+    border-radius: 20px;
+
+    
+    
+}
+
+p {
+    cursor: pointer;
+}
+
+button{
+    border: none;
+    padding: 5px 2px 5px 4px;
+    background: transparent;
+    border-radius: 5px;
+    &:hover{
+        background-color: rgb(242, 239, 237);
+    }
+}
+
+
+
+
+
+
+
+.maxitem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10px;
+    
+    border-radius: 5px;
+    height: 40px;
+    margin-right: 10px;
+    &:hover{
+        background: rgb(255, 239, 229);
+        
+    }
+    &:active{
+        transition: transform 0.3s ease;
+
+    }
+
+    
+    
+
+}
+
+
+
+.mat-list-item{
+    font-size: 0.8em;
+    height: 44px;
+    margin-bottom: 4px;
+    
+}
+
+a:active{
+    outline: none;
+}
+
+.taskInput{
+    border: none;
+    width: 200px;
+}
+
+
+.taskitems{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+   
+    gap: 10px;
+
+}
+
+hr{
+    color: #b6c0ca;
+}
+input{
+    border: none;
+    font-size: 15px;
+    background: transparent;
+    min-height: 30px;
+    width: 90%;
+    max-width: 500px;
+    overflow-wrap: break-word;
+}
+
+.textarea {
+    display: block;
+    width: 500px;
+    max-width: 500px;
+    overflow: hidden;
+    resize: none;
+    min-height: 40px;
+    line-height: 20px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.textarea2 {
+    display: block;
+    width: 500px;
+    
+    max-width: 500px;
+    overflow: hidden;
+    resize: none;
+    min-height: 40px;
+    line-height: 20px;
+}
+.textarea2:focus{
+    outline: none;
+    
+}
+.textarea:focus{
+    outline: none;
+    
+}
+.textarea2[contenteditable]:empty::before {
+    content: "Description";
+    color: gray;
+} 
+.textarea[contenteditable]:empty::before {
+    content: "Task Name";
+    color: gray;
+}
+.taskName input{
+    font-weight: bold;
+}
+
+input:focus{
+    outline: none;
+
+}
+
+
+
+
+

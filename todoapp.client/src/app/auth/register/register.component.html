@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="wrapper">
+        <div class="login-box">
+        <div class="login-header">
+            <span>Sign Up</span>
+        </div>
+        <div class="input">
+            <input type="text" name="" [(ngModel)]="newAccount.firstName" placeholder="First Name"  class="input-field">
+            
+            <i class="pi pi-user"></i>
+        </div>
+
+        <div class="input">
+            <input type="text" name="" [(ngModel)]="newAccount.lastName" placeholder="Last Name"  class="input-field">
+            
+            <i class="pi pi-user"></i>
+        </div>
+
+        <div class="input">
+            <input type="email" name="" [(ngModel)]="newAccount.email" placeholder="Email"  class="input-field">
+            
+            <i class="pi pi-envelope"></i>
+        </div>
+
+        <div class="input">
+            <input type="password" name="" [(ngModel)]="newAccount.password" placeholder="Password"  class="input-field">
+            
+            <i class="pi pi-lock"></i>
+        </div>
+
+        <div class="input">
+            <input type="password" name="" [(ngModel)]="newAccount.confirmPassword" placeholder="Confirm Password" class="input-field">
+            
+            <i class="pi pi-lock"></i>
+        </div>
+        <div class="input">
+            
+            <p-button label="Sign In" styleClass="input-submit" (onClick)="create()" [raised]="true" severity="contrast" />
+    
+        </div>
+    
+
+    </div>
+    </div>
+</div>
+
