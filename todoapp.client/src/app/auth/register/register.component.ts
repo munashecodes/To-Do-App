@@ -22,6 +22,7 @@ export class RegisterComponent {
 
   create(){
     console.log("clicked")
+    console.log(this.newAccount)
        if(!this.newAccount.firstName || !this.newAccount.lastName || !this.newAccount.email || !this.newAccount.password || !this.newAccount.confirmPassword){
         this.messageService.add({
           severity: 'warning', 
