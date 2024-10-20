@@ -11,17 +11,12 @@ using ToDoApp.Data.Entity_Models;
 
 namespace ToDoApp.Service.Helpers
 {
-    public class GenerateJwtToken
-
-        
+    public interface IJwtUtilities
     {
-        private readonly IConfiguration _config;
 
-        public GenerateJwtToken(IConfiguration config)
-        {
-            _config = config;
-        }
-        
+        public string GenerateJwtToken(Account account);
+        public Task<Account>? ValidateJwtToken(string token);
+
 
     }
 }

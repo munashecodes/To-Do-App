@@ -28,7 +28,8 @@ namespace ToDoApp.Service.Services
                 
                 var taskItem = _mapper.Map<TaskItem>(createTask);
 
-                //taskItem.PrepareEntityForCreate(account);
+                taskItem.PrepareEntityForCreate(account);
+                taskItem.UserId = account.Id;
 
                 _context.Tasks.Add(taskItem);
                 await _context.SaveChangesAsync();

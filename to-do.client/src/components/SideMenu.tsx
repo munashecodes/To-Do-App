@@ -7,6 +7,7 @@ import today from '../assets/icons/date.svg'
 import upcoming from '../assets/icons/upcoming.svg'
 import menu from '../assets/icons/menu.svg'
 import me from '../assets/me.png'
+import TodayIcon from './TodayIcon'
 
 
 interface Props {
@@ -15,6 +16,8 @@ interface Props {
     addTask: () => void
 }
 const SideMenu = ({ isVisible, toggleSidebar, addTask }: Props) => {
+    const user = sessionStorage.getItem('account')
+    const account : any = JSON.parse(user!)
     
   return (
     <>
@@ -47,7 +50,7 @@ const SideMenu = ({ isVisible, toggleSidebar, addTask }: Props) => {
             { label: 'Add Task', icon: add, action: addTask },
             { label: 'Search', icon: search },
             { label: 'Inbox', icon: inbox },
-            { label: 'Today', icon: today },
+            { label: 'Today', svg: <TodayIcon/> },
             { label: 'Upcoming', icon: upcoming },
           ].map((item) => (
             <li key={item.label}>
@@ -57,7 +60,13 @@ const SideMenu = ({ isVisible, toggleSidebar, addTask }: Props) => {
                 className="flex items-center rounded-lg px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
               >
                 <span className="flex items-center justify-center h-8 w-8 mr-2">
-                  <img src={item.icon} alt={item.label} className="h-6 w-6" />
+                  {
+                    item.icon && <img src={item.icon} alt={item.label} className="h-6 w-6" />
+                  }
+                  {
+                    !item.icon && item.svg
+                  }
+                  
                 </span>
                 {isVisible && <span>{item.label}</span>}
               </a>
@@ -77,9 +86,9 @@ const SideMenu = ({ isVisible, toggleSidebar, addTask }: Props) => {
           {isVisible && 
           <p className="text-xs  transition-all duration-300 ease-in-out">
             
-          <strong className="block font-medium">Munashe Gandari</strong>
+          <strong className="block font-medium">{account.firstName + " " + account.lastName}</strong>
 
-          <span>munashegandari34@gmail.com</span>
+          <span>{account.email}</span>
         </p>
           }
             

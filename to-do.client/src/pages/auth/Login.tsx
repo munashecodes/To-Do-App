@@ -7,8 +7,7 @@ import 'primereact/resources/primereact.min.css';
 import { useNavigate } from 'react-router-dom'
 import { ChangeEvent, useRef, useState } from 'react'
 import { AuthenticateDto } from '../../interfaces/auth/authenticate-dto'
-import { newAccountRequests } from '../../apiRequests/account-api'
-import { Messages } from 'primereact/messages';
+import { authRequests } from '../../apiRequests/auth-api'
 import { Toast } from 'primereact/toast';
 
 interface Props{
@@ -99,10 +98,10 @@ const Login = () => {
               <button
                 onClick={async(event ) => {
                   event.preventDefault();
-                  var res = await newAccountRequests.authenticate(account)
-                  if(res === true){
+                  var res = await authRequests.authenticate(account)
+                  if(res.isSuccess === true){
                      show()
-                    // handleButtonClick()
+                    handleButtonClick()
                   } else{
                     console.log("wrong password or email")
 

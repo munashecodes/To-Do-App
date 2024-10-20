@@ -10,6 +10,9 @@ using ToDoApp.Service.Dtos;
 using ToDoApp.Service.Shared;
 using Microsoft.EntityFrameworkCore;
 using BCrypt.Net;
+using To_Do.Service.Dtos;
+using To_Do.Service.Helpers;
+using ToDoApp.Service.Helpers;
 
 namespace ToDoApp.Service.Services
 {
@@ -17,44 +20,51 @@ namespace ToDoApp.Service.Services
     {
         private readonly ToDoDbContext _context;
         private readonly IMapper _mapper;
+        private readonly IJwtUtilities _jwtUtilities;
 
         public AccountService(
             ToDoDbContext context,
-            IMapper mapper)
+            IMapper mapper,
+            IJwtUtilities jwtUtilities)
         {
             _context = context;
             _mapper = mapper;
+            _jwtUtilities = jwtUtilities;
         }
 
-        public async Task<ServiceResponse<bool>> Authenticate(AuthenticationRequestDto accountDto)
+        public async Task<ServiceResponse<AuthenticationResponseDto>> Authenticate(AuthenticationRequestDto accountDto)
         {
             try
             {
                 //check for email
-                var email = await _context.Accounts.FirstOrDefaultAsync(a => a.Email == accountDto.Email);
-                if (email != null)
+                var account = await _context.Accounts.FirstOrDefaultAsync(a => a.Email == accountDto.Email);
+                if (account != null)
                 {
                     //verify password
-                    var verification = BCrypt.Net.BCrypt.Verify(accountDto.Password, email.Password);
+                    var verification = BCrypt.Net.BCrypt.Verify(accountDto.Password, account.Password);
+
                     if (verification)
                     {
-                        return new ServiceResponse<bool>(true, "Authentication successful");
+                        var jwtToken = _jwtUtilities.GenerateJwtToken(account);
+                        var response = _mapper.Map<AuthenticationResponseDto>(account);
+                        response.JwtToken = jwtToken;
+                        return new ServiceResponse<AuthenticationResponseDto>(response, "Authentication successful");
                     }
                     else
                     {
-                        return new ServiceResponse<bool>(false, "Incorrect email/password");
+                        return new ServiceResponse<AuthenticationResponseDto>(null, "Incorrect email/password");
                     }
                 }
                 else
                 {
-                    return new ServiceResponse<bool>(false, "Email doesn't exist");
+                    return new ServiceResponse<AuthenticationResponseDto>(null, "Email doesn't exist");
 
                 }
 
             }
             catch(Exception ex)
             {
-                return new ServiceResponse<bool>(false, ex.Message);
+                throw new AppErrors("eror authenticating user: " + ex.Message);
 
             }
             

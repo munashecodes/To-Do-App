@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react"
 import { CreateAccountDto } from "../../interfaces/auth/create-account-dto"
-import { newAccountRequests } from "../../apiRequests/account-api"
+import { authRequests } from "../../apiRequests/auth-api"
 
 
 const Signup = () => {
@@ -130,7 +130,7 @@ const Signup = () => {
 
                 <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
                     <button
-                    onClick={async (event) => {event.preventDefault();await newAccountRequests.create(newAccount)}}
+                    onClick={async (event) => {event.preventDefault();await authRequests.create(newAccount)}}
                     className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
                     >
                     Create an account

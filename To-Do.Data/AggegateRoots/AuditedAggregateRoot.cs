@@ -9,9 +9,10 @@ namespace ToDoApp.Data.AggegateRoots
 {
     public class AuditedAggregateRoot<T> : BasicAggregateRoot<int>
     {
-        public DateTime? CreationTime { get; set; }
+        public DateTime? CreationTime { get; set; } = DateTime.Now;
         public DateTime? DeletionTime { get; set; }
         public int? DeleterId { get; set; }
+        public bool IsDeleted { get; set; } = false;
         public Account? Deleter { get; set; }
         public int? CreatorId { get; set; }
         public Account? Creator { get; set; }

@@ -3,7 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Text.Json.Serialization;
+using To_Do.Service.Authentication;
+using To_Do.Service.Helpers;
 using ToDoApp.Data.DbContexts;
+using ToDoApp.Service.Helpers;
 using ToDoApp.Service.Services;
 
 namespace ToDoApp.Server
@@ -27,10 +30,16 @@ namespace ToDoApp.Server
             #region App Services
             builder.Services.AddTransient<ITaskItemService, TaskItemService>();
             builder.Services.AddTransient<IAccountService, AccountService>();
-            #endregion
-            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            
+
+            #endregion
+
+            #region Auth Services
+            builder.Services.AddScoped<IJwtUtilities, JwtUtilities>();
+            builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            #endregion
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -55,6 +64,9 @@ namespace ToDoApp.Server
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials());
+
+            app.UseMiddleware<ErrorMiddleware>();
+            app.UseMiddleware<JwtMiddleware>();
 
             app.UseAuthentication();
             app.UseAuthorization();

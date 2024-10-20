@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using To_Do.Service.Dtos;
 using ToDoApp.Data.Entity_Models;
 using ToDoApp.Service.Dtos;
 
@@ -9,6 +10,7 @@ namespace ToDoApp.Service.Mapping
         public AccountAutoMapperProfile()
         {
             CreateMap<CreateAccountDto, Account>();
+            CreateMap<Account, AuthenticationResponseDto>();
         }
     }
 }
