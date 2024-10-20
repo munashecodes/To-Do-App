@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.placeholder-font-weight {
+  font-weight: 500; 
+}
+.datepicker-container .datepicker {
+  width: 100px; /* Adjust the width of the input */
+  font-size: 0.875rem; /* Smaller font size */
+}
+
+.datepicker-container .datepicker-calendar {
+  transform: scale(0.8); /* Scale down the calendar */
+  transform-origin: top left; /* Set the origin for scaling */
+}
+
+.bgLow {
+  background-color: rgba(151, 219, 167, 0.3);
+}
+
+.bgHigh {
+  background-color: rgba(219, 161, 151, 0.3);
+}
+
+.bgMedium {
+  background-color: rgba(151, 152, 219, 0.3);
+}
+
+.scroll {
+  overflow-y: scroll;
+}
