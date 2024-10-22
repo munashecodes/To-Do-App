@@ -41,7 +41,24 @@ export const taskRequests = {
         console.log(error)
         throw error
       }
-}
+    },
+
+    getToday: async () : Promise<GetTaskDto[]> => {
+      try{
+        
+        var response = await api.get<any>(`/TaskItem/getToday`, )
+
+        return response.data.data
+
+
+        
+
+      }
+      catch(error){
+        console.log(error)
+        throw error
+      }
+    }
 
 
 }

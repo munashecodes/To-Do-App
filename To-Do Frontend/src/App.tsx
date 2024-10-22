@@ -8,6 +8,7 @@ import GetStarted from './pages/GetStarted'
 import Login from './pages/auth/Login'
 import Signup from './pages/auth/Signup'
 import Home from './pages/Home'
+import Today from './pages/Today';
 
 function App() {
  
@@ -15,10 +16,11 @@ function App() {
   return (
       <BrowserRouter>
         <Routes>
-            <Route path="/" Component={GetStarted}/>
+            <Route path="/get-started" Component={GetStarted}/>
             <Route path="/login" Component={Login}/>
             <Route path="/signup" Component={Signup}/>
-            <Route path="/home" Component={Home}/>
+            <Route path="/" Component={Home}/>
+            <Route path="/today" Component={Today}/>
 
         </Routes>
       </BrowserRouter>

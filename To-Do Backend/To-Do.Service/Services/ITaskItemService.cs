@@ -15,6 +15,7 @@ namespace ToDoApp.Service.Services
         Task<ServiceResponse<bool>> Create(CreateTaskItemDto createTask, Account account);
         Task<ServiceResponse<bool>> Update(CreateTaskItemDto createTask, Account account);
         Task<ServiceResponse<List<GetTaskItemsDto>>> GetAll();
+        Task<ServiceResponse<List<GetTaskItemsDto>>> GetToday();
         Task<ServiceResponse<bool>> Delete(int id, Account account);
 
     }

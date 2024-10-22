@@ -31,5 +31,12 @@ namespace ToDoApp.Api.Controllers
         {
             return Ok(await _taskItemService.GetAll());
         }
+
+        [HttpGet("getToday")]
+
+        public async Task<ActionResult<ServiceResponse<List<GetTaskItemsDto>>>> GetToday()
+        {
+            return Ok(await _taskItemService.GetToday());
+        }
     }
 }

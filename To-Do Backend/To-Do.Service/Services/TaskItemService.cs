@@ -68,6 +68,25 @@ namespace ToDoApp.Service.Services
             }
         }
 
+        public async Task<ServiceResponse<List<GetTaskItemsDto>>> GetToday()
+        {
+            try
+            {
+
+                var taskItems = await _context.Tasks.Where(t => t.DateToRemind.Date == DateTime.Today).ToListAsync();
+
+                var data = _mapper.Map<List<TaskItem>, List<GetTaskItemsDto>>(taskItems);
+
+                return new ServiceResponse<List<GetTaskItemsDto>>(data, "task retrieved successfully");
+
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResponse<List<GetTaskItemsDto>>(null, ex.Message);
+
+            }
+        }
+
         public Task<ServiceResponse<bool>> Update(CreateTaskItemDto createTask, Account account)
         {
             throw new NotImplementedException();

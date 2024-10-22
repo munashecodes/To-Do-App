@@ -3,19 +3,21 @@ import logo from '../assets/favicon.png'
 import add from '../assets/icons/plus.svg'
 import search from '../assets/icons/search.svg'
 import inbox from '../assets/icons/inbox.svg'
-import today from '../assets/icons/date.svg'
 import upcoming from '../assets/icons/upcoming.svg'
 import menu from '../assets/icons/menu.svg'
 import me from '../assets/me.png'
 import TodayIcon from './TodayIcon'
+import { Dispatch, SetStateAction } from 'react'
 
 
 interface Props {
     isVisible: boolean,
     toggleSidebar: () => void
     addTask: () => void
+    page: (page: string) => void
 }
-const SideMenu = ({ isVisible, toggleSidebar, addTask }: Props) => {
+const SideMenu = ({ isVisible, toggleSidebar, addTask, page }: Props) => {
+  
     const user = sessionStorage.getItem('account')
     const account : any = JSON.parse(user!)
     
@@ -49,14 +51,17 @@ const SideMenu = ({ isVisible, toggleSidebar, addTask }: Props) => {
           {[
             { label: 'Add Task', icon: add, action: addTask },
             { label: 'Search', icon: search },
-            { label: 'Inbox', icon: inbox },
-            { label: 'Today', svg: <TodayIcon/> },
-            { label: 'Upcoming', icon: upcoming },
-          ].map((item) => (
-            <li key={item.label}>
+            { label: 'Inbox', icon: inbox, page: 'inbox' },
+            { label: 'Today', svg: <TodayIcon/>, page:'today' },
+            { label: 'Upcoming', icon: upcoming, },
+          ].map((item, index) => (
+            <li key={index}>
               <a
                 href="#"
-                onClick={item.action ? item.action : undefined}
+                onClick={() => {
+
+                  item.action ? item.action : page(item.page!)
+                }}
                 className="flex items-center rounded-lg px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
               >
                 <span className="flex items-center justify-center h-8 w-8 mr-2">
@@ -69,6 +74,7 @@ const SideMenu = ({ isVisible, toggleSidebar, addTask }: Props) => {
                   
                 </span>
                 {isVisible && <span>{item.label}</span>}
+                
               </a>
             </li>
           ))}
